@@ -1,0 +1,69 @@
+{
+  "DisplayName": "Main",
+  "Tooltip": null,
+  "HelpLink": null,
+  "Color": null,
+  "OriginalIconFileName": null,
+  "Arguments": [
+    {
+      "Name": "apps_str_OperationType",
+      "DisplayName": "apps_str_OperationType",
+      "Category": null,
+      "Tooltip": "手術類型",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "apps_str_WardLevel",
+      "DisplayName": "apps_str_WardLevel",
+      "Category": null,
+      "Tooltip": "病房等級",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "apps_str_DiseaseLevel",
+      "DisplayName": "apps_str_DiseaseLevel",
+      "Category": null,
+      "Tooltip": "疾病等級",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "apps_str_DiseaseType",
+      "DisplayName": "apps_str_DiseaseType",
+      "Category": null,
+      "Tooltip": "疾病類型",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    },
+    {
+      "Name": "apps_str_UserName",
+      "DisplayName": "apps_str_UserName",
+      "Category": null,
+      "Tooltip": "客戶名稱",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
+    }
+  ]
+}
