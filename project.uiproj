@@ -1,0 +1,6 @@
+{
+  "Name": "CollectInformation",
+  "ProjectType": "Process",
+  "Description": "【AI理賠客服】收集初始訊息",
+  "MainFile": "Main.xaml"
+}
