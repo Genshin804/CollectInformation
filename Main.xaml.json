@@ -64,6 +64,18 @@
       "IsPrincipal": true,
       "ArgumentType": 0,
       "DataSourceItems": null
+    },
+    {
+      "Name": "exc_lst_Policies",
+      "DisplayName": "exc_lst_Policies",
+      "Category": null,
+      "Tooltip": "客戶於公司所保保險項目",
+      "Placeholder": null,
+      "Widget": null,
+      "IsRequired": false,
+      "IsPrincipal": true,
+      "ArgumentType": 0,
+      "DataSourceItems": null
     }
   ]
 }

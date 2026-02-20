@@ -1,5 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ue="clr-namespace:UiPath.Excel;assembly=UiPath.Excel.Activities" xmlns:ueab="clr-namespace:UiPath.Excel.Activities.Business;assembly=UiPath.Excel.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
+    <x:Property sap2010:Annotation.AnnotationText="客戶於公司所保保險項目" Name="exc_lst_Policies" Type="OutArgument(scg:List(x:String))" />
     <x:Property sap2010:Annotation.AnnotationText="客戶名稱" Name="apps_str_UserName" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="手術類型" Name="apps_str_OperationType" Type="InArgument(x:String)" />
     <x:Property sap2010:Annotation.AnnotationText="病房等級" Name="apps_str_WardLevel" Type="InArgument(x:String)" />
@@ -45,6 +46,8 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>UiPath.Shared.Activities</x:String>
       <x:String>System.Numerics</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Xml.Serialization</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -97,9 +100,16 @@
       <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
       <AssemblyReference>System.Runtime.Numerics</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.Linq.Parallel</AssemblyReference>
+      <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1281,3006" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1281,4677" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="..\DB.xlsx" Name="str_DBPath" />
     </Sequence.Variables>
@@ -108,27 +118,27 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="584,2983" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
+    <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="584,4654" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_2">
       <ueab:ExcelProcessScopeX.Body>
         <ActivityAction x:TypeArguments="ui:IExcelProcess">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="ui:IExcelProcess" Name="ExcelProcessScopeTag" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="582,2913" sap2010:WorkflowViewState.IdRef="Sequence_4">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="582,4584" sap2010:WorkflowViewState.IdRef="Sequence_4">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:CommentOut sap2010:Annotation.AnnotationText="傳入參數" DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548,466" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="548,435" sap2010:WorkflowViewState.IdRef="CommentOut_1">
               <ui:CommentOut.Body>
-                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,324" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="512,324" sap2010:WorkflowViewState.IdRef="Sequence_10">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,264" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+                  <ui:MultipleAssign DisplayName="Multiple Assign" sap:VirtualizedContainerService.HintSize="478,264" sap2010:WorkflowViewState.IdRef="MultipleAssign_2">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="8">
                         <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -176,41 +186,125 @@
                   </ui:MultipleAssign>
                 </Sequence>
               </ui:CommentOut.Body>
-              <sap:WorkflowViewStateService.ViewState>
-                <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                </scg:Dictionary>
-              </sap:WorkflowViewStateService.ViewState>
             </ui:CommentOut>
-            <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="548,2387" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[str_DBPath]">
+            <ueab:ExcelApplicationCard ReadFormatting="{x:Null}" SensitivityLabel="{x:Null}" CreateNewFile="False" DisplayName="Use Excel File" sap:VirtualizedContainerService.HintSize="548,4089" sap2010:WorkflowViewState.IdRef="ExcelApplicationCard_2" ResizeWindow="None" SensitivityOperation="None" WorkbookPath="[str_DBPath]">
               <ueab:ExcelApplicationCard.Body>
                 <ActivityAction x:TypeArguments="ue:IWorkbookQuickHandle">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ue:IWorkbookQuickHandle" Name="Excel" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,2167" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="486,3869" sap2010:WorkflowViewState.IdRef="Sequence_5">
                     <Sequence.Variables>
+                      <Variable x:TypeArguments="sd:DataTable" Name="exc_dt_PoliciesDetail" />
                       <Variable x:TypeArguments="x:String" Name="exc_str_UserID" />
                       <Variable x:TypeArguments="x:Int32" Name="exc_int_FirstEmptyIndex" />
+                      <Variable x:TypeArguments="scg:List(x:String)" Name="exc_lst_PoliciesID" />
+                      <Variable x:TypeArguments="sd:DataTable" Name="exc_dt_Policies" />
                     </Sequence.Variables>
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:LookupX DisplayName="Lookup Range" sap:VirtualizedContainerService.HintSize="416,279" sap2010:WorkflowViewState.IdRef="LookupX_3" Label="[apps_str_UserName]" ResultRange="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;A:A&quot;)]" SourceRange="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;B:B&quot;)]">
+                    <ueab:LookupX DisplayName="Lookup Range_依名稱尋找客戶ID" sap:VirtualizedContainerService.HintSize="452,279" sap2010:WorkflowViewState.IdRef="LookupX_3" Label="[apps_str_UserName]" ResultRange="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;A:A&quot;)]" SourceRange="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;B:B&quot;)]">
                       <ueab:LookupX.Value>
                         <OutArgument x:TypeArguments="x:String">[exc_str_UserID]</OutArgument>
                       </ueab:LookupX.Value>
                     </ueab:LookupX>
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;客戶ID：&quot;+exc_str_UserID]" />
-                    <ueab:FindFirstLastDataRowX LastRowIndex="{x:Null}" BlankRowsToSkip="1" ColumnName="客戶ID" ConfigureLastRowAs="FirstEmptyRow" DisplayName="Find First/Last Data Row" FirstRowIndex="[exc_int_FirstEmptyIndex]" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="416,377" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_2" LastRowOffset="0" Range="[Excel.Sheet(&quot;Customers&quot;)]" VisibleRowsOnly="False" />
-                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;首個空字串位置：&quot;+exc_int_FirstEmptyIndex.ToString]" />
-                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;A&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-客戶ID" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[exc_str_UserID]" />
-                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;B&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-疾病類型" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[apps_str_DiseaseType]" />
-                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;C&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-疾病等級" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="WriteCellX_3" Value="[apps_str_DiseaseLevel]" />
-                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;D&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-病房等級" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="WriteCellX_4" Value="[apps_str_WardLevel]" />
-                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;E&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-手術類型" sap:VirtualizedContainerService.HintSize="416,213" sap2010:WorkflowViewState.IdRef="WriteCellX_5" Value="[apps_str_OperationType]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;客戶ID：&quot;+exc_str_UserID]" />
+                    <Sequence DisplayName="查詢客戶納保保單" sap:VirtualizedContainerService.HintSize="452,1247" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="ReadRangeX_1" Range="[Excel.Sheet(&quot;Policies_Summary&quot;)]" SaveTo="[exc_dt_Policies]" />
+                      <ui:FilterDataTable DataTable="[exc_dt_Policies]" DisplayName="Filter Data Table" FilterRowsMode="Keep" sap:VirtualizedContainerService.HintSize="416,195" sap2010:WorkflowViewState.IdRef="FilterDataTable_1" OutputDataTable="[exc_dt_Policies]" SelectColumnsMode="Remove">
+                        <ui:FilterDataTable.Filters>
+                          <scg:List x:TypeArguments="ui:FilterOperationArgument" Capacity="4">
+                            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                              <ui:FilterOperationArgument.Column>
+                                <InArgument x:TypeArguments="x:String">["要保人"]</InArgument>
+                              </ui:FilterOperationArgument.Column>
+                              <ui:FilterOperationArgument.Operand>
+                                <InArgument x:TypeArguments="x:String">[exc_str_UserID]</InArgument>
+                              </ui:FilterOperationArgument.Operand>
+                            </ui:FilterOperationArgument>
+                            <ui:FilterOperationArgument BooleanOperator="And" Operator="EQ">
+                              <ui:FilterOperationArgument.Column>
+                                <InArgument x:TypeArguments="x:String">["效力狀態"]</InArgument>
+                              </ui:FilterOperationArgument.Column>
+                              <ui:FilterOperationArgument.Operand>
+                                <InArgument x:TypeArguments="x:String">["有效"]</InArgument>
+                              </ui:FilterOperationArgument.Operand>
+                            </ui:FilterOperationArgument>
+                          </scg:List>
+                        </ui:FilterDataTable.Filters>
+                        <ui:FilterDataTable.SelectColumns>
+                          <scg:List x:TypeArguments="InArgument" Capacity="4">
+                            <x:Null />
+                          </scg:List>
+                        </ui:FilterDataTable.SelectColumns>
+                      </ui:FilterDataTable>
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_1">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="scg:List(x:String)">[exc_lst_PoliciesID]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="scg:List(x:String)">[exc_dt_Policies.AsEnumerable().Select(Function(r) r("保單碼").ToString).ToList()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ueab:ReadRangeX DisplayName="Read Range" sap:VirtualizedContainerService.HintSize="416,222" sap2010:WorkflowViewState.IdRef="ReadRangeX_2" Range="[Excel.Sheet(&quot;Policies_Detail&quot;)]" SaveTo="[exc_dt_PoliciesDetail]" />
+                      <Assign sap:VirtualizedContainerService.HintSize="416,175" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="scg:List(x:String)">[exc_lst_Policies]</OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="scg:List(x:String)" xml:space="preserve">[exc_dt_PoliciesDetail.AsEnumerable() _
+    .Where(Function(row) exc_lst_PoliciesID.Contains(row("保單碼").ToString) AndAlso Not String.IsNullOrWhiteSpace(row("保單名稱").ToString)) _
+    .Select(Function(row) row("保單名稱").ToString.Trim) _
+    .Distinct() _
+    .ToList()]</InArgument>
+                        </Assign.Value>
+                      </Assign>
+                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[apps_str_UserName+&quot;納保項目：&quot;+string.Join(&quot;,&quot;,exc_lst_Policies)]" />
+                    </Sequence>
+                    <ueab:FindFirstLastDataRowX FirstRowIndex="{x:Null}" BlankRowsToSkip="1" ColumnName="客戶ID" ConfigureLastRowAs="FirstEmptyRow" DisplayName="Find First/Last Data Row" FirstRowOffset="0" HasHeaders="True" sap:VirtualizedContainerService.HintSize="452,377" sap2010:WorkflowViewState.IdRef="FindFirstLastDataRowX_2" LastRowIndex="[exc_int_FirstEmptyIndex]" LastRowOffset="0" Range="[Excel.Sheet(&quot;CollectInformation&quot;)]" VisibleRowsOnly="False" />
+                    <If Condition="[exc_int_FirstEmptyIndex=0]" sap:VirtualizedContainerService.HintSize="452,455" sap2010:WorkflowViewState.IdRef="If_1">
+                      <If.Then>
+                        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="450,226" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="416,166" sap2010:WorkflowViewState.IdRef="Assign_4">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="x:Int32">[exc_int_FirstEmptyIndex]</OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="x:Int32">[2]</InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </Sequence>
+                      </If.Then>
+                      <If.Else>
+                        <Sequence DisplayName="Else" sap:VirtualizedContainerService.HintSize="450,90" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </Sequence>
+                      </If.Else>
+                    </If>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="452,175" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;首個空字串位置：&quot;+exc_int_FirstEmptyIndex.ToString]" />
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;A&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-客戶ID" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="WriteCellX_1" Value="[exc_str_UserID]" />
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;B&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-疾病類型" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="WriteCellX_2" Value="[apps_str_DiseaseType]" />
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;C&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-疾病等級" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="WriteCellX_3" Value="[apps_str_DiseaseLevel]" />
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;D&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-病房等級" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="WriteCellX_4" Value="[apps_str_WardLevel]" />
+                    <ueab:WriteCellX Cell="[Excel.Sheet(&quot;CollectInformation&quot;).Cell(&quot;E&quot;+exc_int_FirstEmptyIndex.ToString)]" DisplayName="Write Cell-手術類型" sap:VirtualizedContainerService.HintSize="452,213" sap2010:WorkflowViewState.IdRef="WriteCellX_5" Value="[apps_str_OperationType]" />
                   </Sequence>
                 </ActivityAction>
               </ueab:ExcelApplicationCard.Body>
