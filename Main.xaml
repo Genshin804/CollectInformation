@@ -109,7 +109,7 @@
       <AssemblyReference>System.Linq.Queryable</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="1281,4577" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="561,4577" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="..\DB.xlsx" Name="str_DBPath" />
     </Sequence.Variables>
@@ -213,8 +213,8 @@
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ueab:FindReplaceValueX ReplaceWith="{x:Null}" DisplayName="Find/Replace Value" FoundAt="[exc_str_Addr]" sap:VirtualizedContainerService.HintSize="452,278" sap2010:WorkflowViewState.IdRef="FindReplaceValueX_1" LookIn="Values" Operation="Find" ValueToFind="[apps_str_UserName]" WhereToSearch="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;B:B&quot;)]" />
-                    <ueab:ReadCellValueX Cell="[Excel.Sheet(&quot;Customers&quot;).Cell(&quot;A&quot;+exc_str_Addr.Replace(&quot;B&quot;,&quot;&quot;))]" DisplayName="Read Cell Value" GetFormattedText="True" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="ReadCellValueX_1">
+                    <ueab:FindReplaceValueX ReplaceWith="{x:Null}" DisplayName="Find Value_依客戶名稱尋找資料位置" FoundAt="[exc_str_Addr]" sap:VirtualizedContainerService.HintSize="452,278" sap2010:WorkflowViewState.IdRef="FindReplaceValueX_1" LookIn="Values" Operation="Find" ValueToFind="[apps_str_UserName]" WhereToSearch="[Excel.Sheet(&quot;Customers&quot;).Range(&quot;B:B&quot;)]" />
+                    <ueab:ReadCellValueX Cell="[Excel.Sheet(&quot;Customers&quot;).Cell(&quot;A&quot;+exc_str_Addr.Replace(&quot;B&quot;,&quot;&quot;))]" DisplayName="Read Cell Value_依照位置取得客戶ID" GetFormattedText="True" sap:VirtualizedContainerService.HintSize="452,222" sap2010:WorkflowViewState.IdRef="ReadCellValueX_1">
                       <ueab:ReadCellValueX.SaveTo>
                         <OutArgument x:TypeArguments="x:String">[exc_str_UserID]</OutArgument>
                       </ueab:ReadCellValueX.SaveTo>

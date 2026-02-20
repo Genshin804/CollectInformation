@@ -1,0 +1,48 @@
+{
+  "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+  "entryPoints": [
+    {
+      "filePath": "Main.xaml",
+      "uniqueId": "70908f97-64a4-44e0-8380-c218b502d883",
+      "type": "process",
+      "input": {
+        "type": "object",
+        "properties": {
+          "apps_str_OperationType": {
+            "type": "string",
+            "description": "手術類型"
+          },
+          "apps_str_WardLevel": {
+            "type": "string",
+            "description": "病房等級"
+          },
+          "apps_str_DiseaseLevel": {
+            "type": "string",
+            "description": "疾病等級"
+          },
+          "apps_str_DiseaseType": {
+            "type": "string",
+            "description": "疾病類型"
+          },
+          "apps_str_UserName": {
+            "type": "string",
+            "description": "客戶名稱"
+          }
+        },
+        "required": []
+      },
+      "output": {
+        "type": "object",
+        "properties": {
+          "exc_lst_Policies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "客戶於公司所保保險項目"
+          }
+        }
+      }
+    }
+  ]
+}
